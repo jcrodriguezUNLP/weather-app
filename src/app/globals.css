@@ -73,6 +73,29 @@
   }
 }
 
+/*inicio animations*/
+@keyframes fadeOutAndDisplayNone {
+  from {
+    opacity: 1;
+    display: flex;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes fadeInAndDisplayFlex {
+  from {
+    opacity: 0;
+    display: none;
+  }
+  to {
+    opacity: 1;
+    display: flex;
+  }
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -95,9 +118,270 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+ul {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  list-style: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+}
+
+input{
+  border-radius: 0.5em;
+  border: 0px solid black;
+}
+
+button{
+  border-radius: 0.5em;
+  border: 0px solid black;
+  padding: 0.4em;
+}
+
+/* inicio header */
+
+header {
+  width: 100%;
+  height: 10vh;
+  background: red;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.7em;
+}
+
+.hambug {
+  height: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+}
+
+.hambug:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 4px 30px rgba(255, 255, 255, 0.1);
+}
+
+.barsContainer {
+  width: 55%;
+  height: 55%;
+  position: relative;
+  transition: height 1s;
+}
+
+.bar {
+  width: 100%;
+  height: 0.13em;
+  background: white;
+  position: absolute;
+  transition: all 1s;
+}
+
+.bar2 {
+  top: 50%;
+  translate: 0% -50%;
+}
+
+.bar3 {
+  top: 100%;
+  translate: 0% -100%;
+}
+
+.barsContainer.active {
+  width: 70%;
+  height: 0.13em;
+}
+
+.bar1.active {
+  rotate: 45deg;
+}
+
+.bar2.active {
+  opacity: 0;
+}
+
+.bar3.active {
+  top: 0;
+  translate: 0%;
+  rotate: -45deg;
+}
+
+.menuDesplegable {
+  position: absolute;
+  height: 90vh;
+  bottom: 0;
+  right: 0;
+  padding: 2em;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(40px);
+  z-index: 2;
+  transition: translate 1s;
+  translate: 100% 0%;
+  border: 1px solid rgb(255, 255, 255, 0.3);
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.menuDesplegable li{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-flow: column;
+  gap: 1em;
+}
+.menuDesplegable a {
+  color: rgb(0, 0, 0);
+  text-shadow: 0px 4px 30px rgba(0, 0, 0, 0.373);
+}
+
+.menuDesplegable.active {
+  translate: 0% 0%;
+}
+
+/* inicio header */
+
+.SearchBar {
+  position: relative;
+
+  width: 50vw;
+}
+
+main{
+  padding: 2em;
+}
+
+input {
+  width: 100%;
+}
+
+.cities {
+  position: absolute;
+  top: 100;
+  z-index: 1;
+
+  width: 100%;
+
+  background: blue;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  width: 100%;
+}
+
+li {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/*my cities*/
+.myCities {
+  display: flex;
+  flex-wrap: wrap; /* Permitir que las tarjetas pasen a la siguiente línea */
+  justify-content: center;
+  align-items: center;
+
+  width: 100%; /* Asegurarse de que el contenedor ocupe el 100% del ancho */
+  gap: 1.5em;
+
+  padding: 1em; /* Agregar un poco de espacio interior */
+}
+
+
+.weatherCard {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgb(255, 255, 255, 0.3);
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  border-radius: 1.2em;
+  width: 12em;
+  min-height: 45vh;
+  overflow: hidden;
+
+  z-index: 0;
+}
+
+.weatherCard .upper {
+  position: relative;
+  width: 100%;
+}
+
+.weatherCard .lower {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.weatherCard .menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.25em 0.18em;
+  border-radius: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.weatherCard .menu:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.weatherCard .menu .punto {
+  width: 0.3em;
+  height: 0.3em;
+  background: white;
+  border-radius: 50%;
+}
+
+.openNewCity {
+  min-width: 5vw;
+  min-height: 5vh;
+
+  background: white;
+  color: black;
+
+  margin: 0em 1em 1em 0em;
+  padding: 0.8em;
+  border-radius: 1em;
+
+  position: fixed; /* Cambiado de absolute a fixed */
+  z-index: 1;
+
+  bottom: 2%; /* Ajusta la distancia desde el fondo de la ventana */
+  right: 2%; /* Ajusta la distancia desde el lado derecho de la ventana */
+}
+
+
+.newCity {
+  background: grey;
+
+  min-width: 25vw;
+  min-height: 10vh;
+
+  top: 50%;
+  left: 50%;
+
+  translate: -50% -50%;
+
+  padding: 1em;
+  border-radius: 1em;
+
 }
 
 @media (prefers-color-scheme: dark) {
